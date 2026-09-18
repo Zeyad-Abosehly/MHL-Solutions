@@ -18,7 +18,7 @@ When entering any three-digit number, the application displays the following mes
 > **"Sorry, the master switch can't be controlled by guests."**
 
 As shown below, this message becomes our starting point for the analysis.
-![[Pasted image 20260728013922.png|400]]
+![](res/pic1)
 
 
 ---
