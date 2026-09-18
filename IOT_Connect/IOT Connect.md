@@ -30,7 +30,7 @@ Open the APK in JADX and search for the following string:
 > **"Sorry, the master switch can't be controlled by guests."**
 
 The search leads us to a method inside the `MasterSwitchActivity` class .
- ![[Pasted image 20260728014557.png|800]]
+![](res/pic2)
 
 After reviewing the method, we notice that once all validation checks pass, the application creates an `Intent` with the following properties:
 
@@ -64,7 +64,7 @@ Search for the `onReceive()` method.
 
 Although JADX returns several results, only one belongs to the application's package .
 
-![[Pasted image 20260728020932.png|800]]
+![](res/pic3)
 
 Inside the method, we find two important validation checks:
 
@@ -79,7 +79,7 @@ The second requirement is determining the correct key accepted by `check_key()`.
 
 ### Step 5: Recover the Correct Key
 
-![[Pasted image 20260728021254.png|800]]
+![](res/pic4)
 
 Analysis of the `check_key()` method shows that it decrypts a fixed Base64-encoded string using AES. The encryption key is generated directly from the integer supplied by the user.
 
@@ -122,7 +122,7 @@ After executing the command, the application displays the following message:
 
 > **"All devices are turned on."**
 
-![[Pasted image 20260728031542.png|800]]
+![](res/pic5)
 
 This confirms that we successfully exploited the exported Broadcast Receiver by sending an unauthorized broadcast that activated the Master Switch.
 
