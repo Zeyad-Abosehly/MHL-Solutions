@@ -122,3 +122,6 @@ To properly secure the application and prevent this attack vector, the following
 ## 5. Conclusion
 
 This vulnerability demonstrates the critical flaw in relying on low-entropy secrets (a 4-digit PIN) to secure data without utilizing hardware-backed protection mechanisms. While the application attempted to secure its data using standard algorithms (AES and PBKDF2), exposing the cryptographic parameters alongside the encrypted payload allowed the entire decryption routine to be lifted and cracked offline, completely bypassing the application's intended security controls.
+
+
+![](images/7.png)
