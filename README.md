@@ -19,6 +19,8 @@ against any system you do not own or have written permission to test.
  ## Labs
 
 - [Lab 01](IOT-connect) — IOT-connect
+- [Lab 02](secure-note) — secure-note
+
 
 ## Notes
 
