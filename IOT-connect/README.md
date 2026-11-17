@@ -231,3 +231,8 @@ Because both security checks have been bypassed, the application executes its no
 The result is identical to the first solution:
 
 > **"All devices are turned on."**
+
+
+
+
+ ![](images/6.png)
