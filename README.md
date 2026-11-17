@@ -16,12 +16,11 @@ and suggestions are appreciated.
 for testing systems without explicit authorization. Do not use these materials
 against any system you do not own or have written permission to test.
 
-<!-- ## Labs
+ ## Labs
 
-- [Lab 01](lab01/) — topic
-- [Lab 02](lab02/) — topic
+- [Lab 01](IOT-connect) — IOT-connect
 
 ## Notes
 
 Each lab folder contains its own README with instructions and notes.
--->
+
