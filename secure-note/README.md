@@ -95,7 +95,7 @@ print("Finished.")
 
 Executing the script  instantly yielded the correct 4-digit PIN and successfully decrypted the cleartext secret message.
 ![](images/5.png)
-<img src="images/6.png" width="800" hight="1000" alt="Screenshot 1">
+<img src="images/6.png" width="500" height="800" alt="Screenshot 1">
 
 ## 3. Impact
 
