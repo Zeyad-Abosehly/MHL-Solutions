@@ -20,7 +20,8 @@ against any system you do not own or have written permission to test.
 
 - [Lab 01](IOT-connect) — IOT-connect
 - [Lab 02](secure-note) — secure-note
-
+- [Lab 03](cyclic-scanner) — cyclic-scanner
+- [Lab 04](guess-me) — guess-me
 
 ## Notes
 
