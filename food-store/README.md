@@ -111,7 +111,7 @@ The database interprets this as:
 ### The Result
 
 After submitting the registration form with the malicious payload, the app successfully created a new user .
-<img src="images/6.png" width="300" height="500" alt="Screenshot 1">
+<img src="images/6.png" width="270" height="500" alt="Screenshot 1">
 
 
 ---
