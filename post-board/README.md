@@ -87,7 +87,7 @@ We first tested the XSS sink by injecting a classic payload . The application re
 ```js
 <img src="invalid.jpg" onerror="alert('XSS')">
 ```
-![](images/6.png)
+<img src="images/6.png" width="270" height="500" alt="Screenshot 1">
 
 It works, now it's time to call the postCowsayMessage() so let's update the payload:
 ```Js
@@ -95,7 +95,7 @@ It works, now it's time to call the postCowsayMessage() so let's update the payl
 ```
 Nothing happened, but if we send any message after that, the first alert will fire and the new message with the response of the command. That's happened when it read the cache again and got the message.
 
-![](images/7.png)
+<img src="images/7.png" width="270" height="500" alt="Screenshot 1">
 
 # Impact
 
