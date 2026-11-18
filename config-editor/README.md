@@ -52,12 +52,14 @@ String serializedData = yaml.dump(deserializedData);
 ```
 This payload forces SnakeYAML to instantiate `java.io.FileOutputStream` with a path inside the app’s private storage.
 
-![](images/6.png)
+<img src="images/6.png" width="300" height="500" alt="Screenshot 1">
+
 
 - tap the **Load** button. Select the previously saved file. The app reads the file and passes its URI to `loadYaml()`.
 - **Observe the result**: The app attempts to deserialize the YAML. The `FileOutputStream` constructor runs, creating the file. Then `yaml.dump()` serializes the instantiated object and displays it in the text area. You will this message :
 
-![](images/7.png)
+<img src="images/7.png" width="300" height="500" alt="Screenshot 1">
+
 
 `The `fd` (file descriptor) value `58` indicates the file was opened (or created) – it’s a real file descriptor assigned by the OS.`
 
