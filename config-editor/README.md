@@ -9,7 +9,7 @@
 
 The manifest reveals only one exported activity, `MainActivity`, which declares intent filters for `VIEW` actions with schemes `file`, `http`, `https`, and MIME type `application/yaml`.  
 
-![[Pasted image 20260829113456.png|800]]
+![](images/1.png)
 
 
 The application requests the following permissions:
@@ -19,18 +19,18 @@ The application requests the following permissions:
 - WRITE_EXTERNAL_STORAGE
 - MANAGE_EXTERNAL_STORAGE
 
-![[Pasted image 20260829113226.png|800]]
+![](images/2.png)
 
 #### MainActivity Code Flow
 
 - `onCreate()` sets up the UI, configures `EditText`, and calls `setButtonListeners()` and `handleIntent()`.    
 
-![[Pasted image 20260829114151.png|800]]
+![](images/3.png)
 - `handleIntent()` retrieves the incoming `Intent`, checks for `ACTION_VIEW`, and if a `Uri` is present, calls `CopyUtil.copyFileFromUri(data)` to copy the file locally, then passes the resulting `Uri` to `loadYaml()`.
-![[Pasted image 20260829114045.png|800]]
+![](images/4.png)
 
 this method do something interesting 
-![[Pasted image 20260829114436.png|800]]
+![](images/5.png)
 
 ```java
 Object deserializedData = yaml.load(inputStream);  
@@ -52,17 +52,17 @@ String serializedData = yaml.dump(deserializedData);
 ```
 This payload forces SnakeYAML to instantiate `java.io.FileOutputStream` with a path inside the app’s private storage.
 
-![[Screenshot_1787996709.png|200]]
+![](images/6.png)
 
 - tap the **Load** button. Select the previously saved file. The app reads the file and passes its URI to `loadYaml()`.
 - **Observe the result**: The app attempts to deserialize the YAML. The `FileOutputStream` constructor runs, creating the file. Then `yaml.dump()` serializes the instantiated object and displays it in the text area. You will this message :
 
-![[Screenshot_1787996731.png|200]]
+![](images/7.png)
 
 `The `fd` (file descriptor) value `58` indicates the file was opened (or created) – it’s a real file descriptor assigned by the OS.`
 
 - **Verify the file existence** using `adb`:
-![[Pasted image 20260829125011.png|800]]
+![](images/8.png)
 
 The file `pwn.txt` is present in the app’s internal storage.
 
@@ -94,3 +94,6 @@ Yaml yaml = new Yaml(new SafeConstructor(new LoaderOptions()));
 # Conclusion
 
 The application is vulnerable to CVE-2022-1471, enabling arbitrary class instantiation and potentially remote code execution. The proof-of-concept successfully created a file in the app’s private storage using a malicious YAML payload delivered through the app’s own save/load functionality. Immediate remediation is recommended.
+
+
+![](images/9.png)
