@@ -22,6 +22,7 @@ against any system you do not own or have written permission to test.
 - [Lab 02](secure-note) — secure-note
 - [Lab 03](cyclic-scanner) — cyclic-scanner
 - [Lab 04](guess-me) — guess-me
+- [Lab 05](strings) — strings
 
 ## Notes
 
