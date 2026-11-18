@@ -150,7 +150,7 @@ adb shell am start -a android.intent.action.VIEW -d "mhl://mobilehackinglab?url=
 
 When the app processes the deep link, the WebView loads the attacker's HTML page. The embedded JavaScript calls `AndroidBridge.getTime("whoami")`, which executes the `whoami` command on the Android system. The result `u0_a156` is displayed inside the app.
 
-![](images/8.png)
+<img src="images/8.png" width="270" height="500" alt="Screenshot 1">
 
 
 # Impact
