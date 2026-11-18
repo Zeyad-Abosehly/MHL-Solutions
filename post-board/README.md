@@ -7,7 +7,7 @@ Exploit an XSS vulnerability in a WebView component to achieve RCE in an Android
 
 We began by examining the `AndroidManifest.xml` file to understand the application's entry points.
 
-![[Pasted image 20260819235514.png|1000]]
+![](images/1.png)
 
 **Key observations:**
 
@@ -18,7 +18,7 @@ We began by examining the `AndroidManifest.xml` file to understand the applicati
 ### Decompiling MainActivity
 
 Moving to the `MainActivity` source code, we found the lifecycle setup:
-![[Pasted image 20260820000431.png|1000]]
+![](images/2.png)
 
 The activity initializes the UI and calls two critical methods:
 - `setupWebView(webView)`
@@ -38,7 +38,7 @@ The logic extracts the following from the intent:
 - **Host**
 - **Message** (extracted from the URI path)
 
-![[Pasted image 20260820001240.png|1000]]
+![](images/3.png)
 
 If all checks pass, it calls `postMarkdownMessage()` with the extracted message. The implementation of this call is:
 
@@ -62,9 +62,9 @@ The relevant methods are:
 - `postMarkdownMessage(String markdownMessage)` – applies regex filtering and adds messages to cache
 - `postCowsayMessage(String cowsayMessage)` – invokes `runCowsay()` with the input
 
-![[Pasted image 20260820004422.png|1200]]
+![](images/4.png)
 
-![[Pasted image 20260820004513.png]]
+![](images/5.png)
 
 The `runCowsay()` method is particularly interesting:
 ```java
@@ -87,7 +87,7 @@ We first tested the XSS sink by injecting a classic payload . The application re
 ```js
 <img src="invalid.jpg" onerror="alert('XSS')">
 ```
-![[Pasted image 20260820005037.png|300]]
+![](images/6.png)
 
 It works, now it's time to call the postCowsayMessage() so let's update the payload:
 ```Js
@@ -95,7 +95,7 @@ It works, now it's time to call the postCowsayMessage() so let's update the payl
 ```
 Nothing happened, but if we send any message after that, the first alert will fire and the new message with the response of the command. That's happened when it read the cache again and got the message.
 
-![[Pasted image 20260820005514.png|300]]
+![](images/7.png)
 
 # Impact
 
@@ -131,3 +131,4 @@ To prevent this vulnerability chain, the following measures should be implemente
 
 This vulnerability chain—combining an exported activity, an XSS-prone WebView, and an insecure JavaScript bridge—enables remote attackers to achieve RCE on the target device. The root cause is insufficient input validation across multiple layers of the application. Implementing defense-in-depth with proper sanitization, secure configuration, and restricted interface exposure would effectively mitigate this attack vector.
 
+![](images/8.png)
