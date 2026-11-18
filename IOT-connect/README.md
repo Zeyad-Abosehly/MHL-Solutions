@@ -18,7 +18,8 @@ When entering any three-digit number, the application displays the following mes
 > **"Sorry, the master switch can't be controlled by guests."**
 
 As shown below, this message becomes our starting point for the analysis.
- ![](images/1.png)
+
+<img src="images/1.png" width="300" height="500" alt="Screenshot 1">
 
 
 ---
@@ -235,4 +236,5 @@ The result is identical to the first solution:
 
 
 
- ![](images/6.png)
+<img src="images/6.png" width="80%" height="600" alt="Screenshot 1">
+
