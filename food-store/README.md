@@ -11,7 +11,7 @@ I started by decompiling the application using **jadx** to review the source cod
 
 First, I examined the `AndroidManifest.xml` file to understand the app's component structure.
 
-![[Pasted image 20260814014130.png|900]]
+![](images/1.png)
 
 I noticed that:
 - `Signup` activity is **not exported** (`exported="false"`)
@@ -22,7 +22,7 @@ I noticed that:
 
 
 Next, I analyzed the `MainActivity` code to understand how it handles incoming intents.
-![[Pasted image 20260814010348.png|1000]]
+![](images/2.png)
 
 I found the following critical issues:
 
@@ -64,7 +64,7 @@ When the malicious intent is received, the `MainActivity` displays:
 - **Username**: "test_user" (or whatever we set)
 - **redits**: 12345 (or whatever we set)
 - **Pro User**: "Pro User" (because we set `IS_PRO_USER` to `true`)
-    ![[Pasted image 20260814012634.png|800]]
+    ![](images/3.png)
 
 This demonstrates that an attacker can completely bypass authentication and become a "Pro User" with any credit amount they desire.
 
@@ -75,11 +75,11 @@ This demonstrates that an attacker can completely bypass authentication and beco
 
 While inspecting the registration logic in `Signup` activity, i found that at the end of the checks it send the user data to the adduser method in dbhelper
 
-![[Pasted image 20260814005623.png|900]]
+![](images4.png)
 
 At adduser method I found another critical vulnerability. The app builds an `INSERT` SQL query using string concatenation:
 
-![[Pasted image 20260814010036.png|900]]
+![](images/5.png)
 
 The code takes the user's input (`Username`) and directly concatenates it into the SQL query string without any sanitization or parameterization That made me consider what would happen if a user entered a specially crafted username containing SQL metacharacters.
 
@@ -111,7 +111,7 @@ The database interprets this as:
 ### The Result
 
 After submitting the registration form with the malicious payload, the app successfully created a new user .
-![[Pasted image 20260814005422.png|300]]
+![](images/6.png)
 
 
 ---
@@ -190,3 +190,6 @@ Add custom permissions to protect the activity:
 ## Conclusion
 
 This challenge demonstrates two serious security vulnerabilities in the FoodStore application: an exported activity that allows unauthorized access with arbitrary intent data, and SQL injection in the registration functionality that enables privilege escalation. By exploiting these flaws, an attacker can bypass authentication, become a "Pro User," manipulate credits, and compromise the entire database. The exploitation vectors were particularly accessible because the app blindly trusts user input without any validation or sanitization. To prevent such attacks, developers must never export sensitive activities, always validate intent data, use parameterized queries instead of string concatenation, and implement proper authentication checks. 
+
+
+![](images/7.png)

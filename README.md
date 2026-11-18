@@ -23,6 +23,9 @@ against any system you do not own or have written permission to test.
 - [Lab 03](cyclic-scanner) — cyclic-scanner
 - [Lab 04](guess-me) — guess-me
 - [Lab 05](strings) — strings
+- [Lab 06](food-store) — food-store
+- [Lab 07](post-board) — post-board
+- [Lab 08](config-editor) — config-editor
 
 ## Notes
 
